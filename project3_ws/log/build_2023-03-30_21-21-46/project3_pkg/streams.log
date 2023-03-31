@@ -1,0 +1,21 @@
+[7.767s] Invoking command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[10.681s] running egg_info
+[10.683s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[10.715s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[10.718s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[10.734s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[10.736s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[10.879s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[10.897s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[10.908s] running build
+[10.908s] running build_py
+[10.908s] running install
+[10.922s] running install_lib
+[10.927s] running install_data
+[10.928s] running install_egg_info
+[10.959s] removing '/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+[10.960s] Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info
+[10.965s] running install_scripts
+[11.090s] Installing laser_scan_to_pointcloud script to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+[11.094s] writing list of installed files to '/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'
+[11.233s] Invoked command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg' returned '0': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
