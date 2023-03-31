@@ -28,16 +28,16 @@ class LaserScanToPointCloud(Node):
         for i, r in enumerate(scan_msg.ranges):
             if r != float('inf') and r != float('nan') and (r > scan_msg.range_min and r < scan_msg.range_max):
                 angle = scan_msg.angle_min + i * scan_msg.angle_increment
-                angle_key = round(angle, 4)
+                angle_key = round(angle, 3)
+                print(r)
                 if self.first:
-                    # if r < range_min:
-                    #     range_min = r
                     self.action_dict[angle_key] = r
+
                 if r > range_min:
                     continue
                 if not self.first:
                     if angle_key in self.action_dict.keys():
-                        if r >= .9 * self.action_dict[angle_key]:
+                        if r >=  self.action_dict[angle_key] - .2:
                             #print("This happened")
                             continue
                         
