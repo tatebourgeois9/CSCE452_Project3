@@ -8,8 +8,8 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # Declare launch arguments
-    input_bag_arg = DeclareLaunchArgument('input_bag')
-    output_bag_arg = DeclareLaunchArgument('output_bag')
+    input_bag_arg = DeclareLaunchArgument('bag_in')
+    output_bag_arg = DeclareLaunchArgument('bag_out')
     
     # Create Node for your project
     laser_scan_to_pointcloud_node = Node(package='project3_pkg',
@@ -17,12 +17,12 @@ def generate_launch_description():
     
     # ExecuteProcess (to play the input bag file
     play_bag = ExecuteProcess(
-        cmd=['ros2', 'bag', 'play', LaunchConfiguration('input_bag')]
+        cmd=['ros2', 'bag', 'play', LaunchConfiguration('bag_in')]
     )
     
     # ExecuteProcess to record the output bag file
     record_bag = ExecuteProcess(
-        cmd=['ros2', 'bag', 'record', '-a', '-o', LaunchConfiguration('output_bag')]
+        cmd=['ros2', 'bag', 'record', '-a', '-o', LaunchConfiguration('bag_out')]
     )
     
     # Event handler to shutdown the system when the playback of the input bag file has completed
