@@ -4,88 +4,82 @@ from sensor_msgs.msg import LaserScan, PointCloud
 from geometry_msgs.msg import Point32
 import math
 import numpy as np
-from sklearn.cluster import DBSCAN
 
 class LaserScanToPointCloud(Node):
+
     def __init__(self):
         super().__init__('laser_scan_to_pointcloud')
         self.sub = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
         self.pub = self.create_publisher(PointCloud, '/scan_pointcloud', 10)
-        self.prev_points_history = []  # Store history of previous points
-        self.history_size = 50  # Number of previous point clouds to track
-        self.stationary_velocity_threshold = 30.0  # Threshold to consider a cluster's average velocity as stationary
-        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
-        self.cluster_min_samples = 4  # Minimum number of points in a cluster
-        self.vicinity_threshold = 0.3  # Maximum distance between two points to be considered in the same vicinity
+
+        # Parameters for filtering and smoothing
+        self.min_range = 0.2
+        self.max_range = 5.0
+        self.moving_average_size = 5
+        self.range_diff_threshold = 0.2
+        self.buffer_zone_threshold = 0.05
+        self.angle_diff_threshold = 0.05
+        self.angle_decimal_places = 3
+        self.scan_history = []
+        self.initial_ranges = None
 
     def scan_callback(self, scan_msg):
+        # Apply moving average filter
+        self.scan_history.append(scan_msg.ranges)
+        if len(self.scan_history) > self.moving_average_size:
+            self.scan_history.pop(0)
+        filtered_ranges = np.mean(self.scan_history, axis=0)
+
+        # Initialize initial_ranges with the first scan
+        if self.initial_ranges is None:
+            self.initial_ranges = np.copy(filtered_ranges)
+            return
+
+        # Replace NaN and Inf values in both arrays with a large value
+        large_value = 1e6
+        filtered_ranges = np.nan_to_num(filtered_ranges, nan=large_value, posinf=large_value, neginf=large_value)
+        initial_ranges = np.nan_to_num(self.initial_ranges, nan=large_value, posinf=large_value, neginf=large_value)
+
+        # Convert LaserScan to PointCloud
         header = scan_msg.header
         points = []
 
-        for i, r in enumerate(scan_msg.ranges):
-            if r != float('inf') and r != float('nan'):
+        range_diffs = np.abs(np.subtract(filtered_ranges, initial_ranges))
+        changed_angles = np.where(range_diffs > self.range_diff_threshold)[0]
+
+        for i in changed_angles:
+            r = filtered_ranges[i]
+            if self.min_range < r < self.max_range:
+                # Calculate the angle of the ray
                 angle = scan_msg.angle_min + i * scan_msg.angle_increment
+                # Round the angle
+                angle = round(angle, self.angle_decimal_places)
+
+                # Convert polar coordinates to Cartesian coordinates
                 x = r * math.cos(angle)
                 y = r * math.sin(angle)
                 z = 0.0
 
-                point = Point32(x=x, y=y, z=z)
-                points.append(point)
+                initial_r = initial_ranges[i]
+                initial_x = initial_r * math.cos(angle)
+                initial_y = initial_r * math.sin(angle)
 
-        self.prev_points_history.append(points)
+                # Calculate the distance between the initial point and the current point
+                distance = math.sqrt((x - initial_x) ** 2 + (y - initial_y) ** 2)
 
-        if len(self.prev_points_history) > self.history_size:
-            self.prev_points_history.pop(0)  # Remove the oldest point cloud
+                # Calculate the angle difference
+                angle_diff = abs(angle - (scan_msg.angle_min + i * scan_msg.angle_increment))
 
-        # Cluster the points using DBSCAN
-        X = np.array([[p.x, p.y] for p in points])
+                # Check if the current point is within the buffer zone of the initial point and if the angle difference is significant
+                if distance > self.buffer_zone_threshold and angle_diff > self.angle_diff_threshold:
+                    point = Point32(x=x, y=y, z=z)
+                    # Add the point to the list of points
+                    points.append(point)
 
-        # Remove any NaN values from X
-        X = X[~np.isnan(X).any(axis=1)]
+        cloud_msg = PointCloud(header=header, points=points)
 
-        dbscan = DBSCAN(eps=self.cluster_eps, min_samples=self.cluster_min_samples)
-        dbscan.fit(X)
-
-        labels = dbscan.labels_
-        unique_labels = np.unique(labels)
-        moving_centroids = []
-
-        for label in unique_labels:
-            if label != -1:
-                cluster_points = X[labels == label]
-                cluster_velocities = []
-
-                # Calculate the velocities of each point in the cluster
-                for i, point in enumerate(cluster_points):
-                    if len(self.prev_points_history) >= 2:
-                        prev_point = self.prev_points_history[-2][i]
-                        dx = point[0] - prev_point.x
-                        dy = point[1] - prev_point.y
-                        dt = scan_msg.scan_time
-                        vx = dx / dt
-                        vy = dy / dt
-                        cluster_velocities.append((vx, vy))
-
-                # Calculate the average velocity of the cluster
-                if cluster_velocities:
-                    avg_velocity = np.mean(cluster_velocities, axis=0)
-                    magnitude = np.linalg.norm(avg_velocity)
-                    if magnitude > self.stationary_velocity_threshold:
-                        centroid = np.mean(cluster_points, axis=0)
-                        # Check if the centroid is close to any previously detected moving clusters
-                        is_close_to_previous = False
-                        for prev_centroid in moving_centroids:
-                            if np.linalg.norm(centroid - prev_centroid) < self.vicinity_threshold:
-                                is_close_to_previous = True
-                                break
-                        # Only add the centroid to the list of moving centroids if it is not close to any previous ones
-                        if not is_close_to_previous:
-                            moving_centroids.append(centroid)
-
-    # Publish the filtered point cloud containing only the centroids of the moving clusters
-        moving_centroid_points = [Point32(x=x, y=y, z=0.0) for x, y in moving_centroids]
-        moving_centroid_cloud_msg = PointCloud(header=header, points=moving_centroid_points)
-        self.pub.publish(moving_centroid_cloud_msg)
+        # Publish the point cloud messages
+        self.pub.publish(cloud_msg)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -94,7 +88,8 @@ def main(args=None):
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-    node.destroy()
+    node.destroy_node()
+    rclpy.shutdown()
 
-main()
-   
+if __name__ == '__main__':
+    main()

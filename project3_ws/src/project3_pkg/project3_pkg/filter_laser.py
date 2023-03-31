@@ -38,12 +38,12 @@ class FilterLaser(Node):
         diff = np.abs(current_ranges - past_ranges)
 
         # Create a boolean mask for the non-static ranges
-        mask = diff > .5
+        mask = diff > 5
 
         # Apply the mask to the ranges
         ranges_filtered = np.where(mask, current_ranges, 0)
 
-        #ranges_filtered = medfilt(ranges_filtered, WINDOW_SIZE)
+        ranges_filtered = medfilt(ranges_filtered, 1)
         # Create a new LaserScan message with the filtered ranges
         msg_filtered = LaserScan()
         msg_filtered.header = msg.header
