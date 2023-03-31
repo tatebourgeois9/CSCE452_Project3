@@ -1,0 +1,25 @@
+[5.384s] Invoking command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[7.387s] running egg_info
+[7.390s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[7.404s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[7.405s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[7.406s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[7.407s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[7.521s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[7.523s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[7.525s] running build
+[7.525s] running build_py
+[7.532s] copying project3_pkg/laser_scan_to_pointcloud.py -> /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build/lib/project3_pkg
+[7.532s] running install
+[7.547s] running install_lib
+[7.554s] copying /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build/lib/project3_pkg/laser_scan_to_pointcloud.py -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg
+[7.555s] byte-compiling /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg/laser_scan_to_pointcloud.py to laser_scan_to_pointcloud.cpython-38.pyc
+[7.568s] running install_data
+[7.589s] copying launch/launch.py -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[7.589s] running install_egg_info
+[7.589s] removing '/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+[7.589s] Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info
+[7.590s] running install_scripts
+[7.661s] Installing laser_scan_to_pointcloud script to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+[7.672s] writing list of installed files to '/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'
+[7.728s] Invoked command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg' returned '0': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
