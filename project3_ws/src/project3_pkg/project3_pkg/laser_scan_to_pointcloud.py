@@ -11,17 +11,12 @@ class LaserScanToPointCloud(Node):
         super().__init__('laser_scan_to_pointcloud')
         self.sub = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
         self.pub = self.create_publisher(PointCloud, '/scan_pointcloud', 10)
-        self.prev_points_history = []  # Store history of previous points
-        self.history_size = 50  # Number of previous point clouds to track
-        self.stationary_velocity_threshold = 30.0  # Threshold to consider a cluster's average velocity as stationary
-        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
-        self.cluster_min_samples = 5  # Minimum number of points in a cluster
-        self.vicinity_threshold = 0.3  # Maximum distance between two points to be considered in the same vicinity
+
         self.action_dict = {}
         self.counter = 0
         self.first = True
-        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
-        self.cluster_min_samples = 3
+        self.cluster_eps = 0.3  # Maximum distance between two points to be considered in the same cluster
+        self.cluster_min_samples = 4
 
 
 
@@ -49,6 +44,10 @@ class LaserScanToPointCloud(Node):
         self.counter += 1
         if self.counter == 5:
             self.first = False
+            return  
+        if self.first:
+            return
+        
         # Perform DBSCAN clustering
         X = np.array([[p.x, p.y] for p in points])
         
