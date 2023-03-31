@@ -12,8 +12,8 @@ def generate_launch_description():
     output_bag_arg = DeclareLaunchArgument('output_bag')
     
     # Create Node for your project
-    track_node = Node(package='project3',
-                      executable='track')
+    laser_scan_2_pointcloud_node = Node(package='project3',
+                                         executable='laser_scan_2_pointcloud')
     
     # ExecuteProcess to play the input bag file
     play_bag = ExecuteProcess(
@@ -33,11 +33,12 @@ def generate_launch_description():
     ld = LaunchDescription([
         input_bag_arg,
         output_bag_arg,
-        track_node,
+        laser_scan_2_pointcloud_node,
         play_bag,
         record_bag,
         terminate_at_end
     ])
     
     return ld
+
 
