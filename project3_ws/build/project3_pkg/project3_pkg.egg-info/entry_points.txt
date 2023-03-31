@@ -1,0 +1,3 @@
+[console_scripts]
+laser_scan_to_pointcloud = project3_pkg.laser_scan_to_pointcloud:main
+
