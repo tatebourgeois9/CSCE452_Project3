@@ -1,0 +1,16 @@
+[7.488s] Invoking command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[10.576s] running egg_info
+[10.577s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[10.584s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[10.591s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[10.593s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[10.594s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[10.775s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[10.776s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[10.786s] running build
+[10.786s] running build_py
+[10.787s] running install
+[10.809s] running install_lib
+[10.818s] running install_data
+[10.819s] error: can't copy 'bags/example4': doesn't exist or not a regular file
+[10.926s] Invoked command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg' returned '1': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed

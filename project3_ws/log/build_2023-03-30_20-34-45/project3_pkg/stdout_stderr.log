@@ -1,0 +1,29 @@
+running egg_info
+writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying bags/example4/example4.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example4/metadata.yaml -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example9/example9.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example8/example8.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example1/example1.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example7/example7.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example3/example3.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example6/example6.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example2/example2.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+copying bags/example5/example5.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+running install_egg_info
+removing '/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info
+running install_scripts
+Installing laser_scan_to_pointcloud script to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+writing list of installed files to '/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'

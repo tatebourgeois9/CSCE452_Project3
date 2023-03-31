@@ -1,0 +1,17 @@
+[8.084s] Invoking command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[11.349s] running egg_info
+[11.350s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[11.372s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[11.373s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[11.375s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[11.376s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[11.516s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[11.518s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[11.528s] running build
+[11.528s] running build_py
+[11.529s] running install
+[11.532s] running install_lib
+[11.549s] running install_data
+[11.564s] copying bags/README.txt -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.591s] error: can't copy 'bags/example4': doesn't exist or not a regular file
+[11.636s] Invoked command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg' returned '1': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed

@@ -1,0 +1,31 @@
+[8.157s] Invoking command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[11.448s] running egg_info
+[11.450s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[11.467s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[11.469s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[11.470s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[11.475s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[11.672s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[11.679s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[11.683s] running build
+[11.683s] running build_py
+[11.684s] running install
+[11.689s] running install_lib
+[11.712s] running install_data
+[11.713s] copying bags/example4/example4.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.732s] copying bags/example4/metadata.yaml -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.732s] copying bags/example9/example9.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.753s] copying bags/example8/example8.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.760s] copying bags/example1/example1.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.766s] copying bags/example7/example7.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.785s] copying bags/example3/example3.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.807s] copying bags/example6/example6.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.814s] copying bags/example2/example2.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.826s] copying bags/example5/example5.db3 -> /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/share/project3_pkg
+[11.834s] running install_egg_info
+[11.851s] removing '/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+[11.860s] Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages/project3_pkg-0.0.0-py3.8.egg-info
+[11.862s] running install_scripts
+[11.949s] Installing laser_scan_to_pointcloud script to /home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+[11.971s] writing list of installed files to '/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'
+[12.068s] Invoked command in '/home/chase/CSCE452_Project3/project3_ws/src/project3_pkg' returned '0': PYTHONPATH=/home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/chase/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/chase/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
