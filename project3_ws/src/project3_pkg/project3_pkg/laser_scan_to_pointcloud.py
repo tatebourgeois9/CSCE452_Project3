@@ -15,7 +15,7 @@ class LaserScanToPointCloud(Node):
         self.action_dict = {}
         self.counter = 0
         self.first = True
-        self.cluster_eps = 0.3  # Maximum distance between two points to be considered in the same cluster
+        self.cluster_eps = 0.325  # Maximum distance between two points to be considered in the same cluster
         self.cluster_min_samples = 4
 
 
@@ -32,7 +32,7 @@ class LaserScanToPointCloud(Node):
                     self.action_dict[angle_key] = r
                 if not self.first:
                     if angle_key in self.action_dict.keys():
-                        if r >=  self.action_dict[angle_key] - .5:
+                        if r >=  self.action_dict[angle_key] - .4:
                             #print("This happened")
                             continue
                         
