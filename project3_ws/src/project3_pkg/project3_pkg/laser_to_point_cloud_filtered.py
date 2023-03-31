@@ -20,6 +20,8 @@ class LaserScanToPointCloud(Node):
         self.action_dict = {}
         self.counter = 0
         self.first = True
+        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
+        self.cluster_min_samples = 3
 
     def scan_callback(self, scan_msg):
         header = scan_msg.header
@@ -47,6 +49,12 @@ class LaserScanToPointCloud(Node):
 
                 point = Point32(x=x, y=y, z=z)
                 points.append(point)
+
+
+        X = np.array([[p.x, p.y] for p in points])
+
+        
+
         self.counter += 1
         if self.counter == 5:
             self.first = False
@@ -55,58 +63,6 @@ class LaserScanToPointCloud(Node):
         # moving_centroid_points = [Point32(x=x, y=y, z=0.0) for x, y in points]
         moving_centroid_cloud_msg = PointCloud(header=header, points=points)
         self.pub.publish(moving_centroid_cloud_msg)
-    #     if len(self.prev_points_history) > self.history_size:
-    #         self.prev_points_history.pop(0)  # Remove the oldest point cloud
-
-    #     # Cluster the points using DBSCAN
-    #     X = np.array([[p.x, p.y] for p in points])
-
-    #     # Remove any NaN values from X
-    #     X = X[~np.isnan(X).any(axis=1)]
-
-    #     dbscan = DBSCAN(eps=self.cluster_eps, min_samples=self.cluster_min_samples)
-    #     dbscan.fit(X)
-
-    #     labels = dbscan.labels_
-    #     unique_labels = np.unique(labels)
-    #     moving_centroids = []
-
-    #     for label in unique_labels:
-    #         if label != -1:
-    #             cluster_points = X[labels == label]
-    #             cluster_velocities = []
-
-    #             # Calculate the velocities of each point in the cluster
-    #             for i, point in enumerate(cluster_points):
-    #                 if len(self.prev_points_history) >= 2:
-    #                     prev_point = self.prev_points_history[-2][i]
-    #                     dx = point[0] - prev_point.x
-    #                     dy = point[1] - prev_point.y
-    #                     dt = scan_msg.scan_time
-    #                     vx = dx / dt
-    #                     vy = dy / dt
-    #                     cluster_velocities.append((vx, vy))
-
-    #             # Calculate the average velocity of the cluster
-    #             if cluster_velocities:
-    #                 avg_velocity = np.mean(cluster_velocities, axis=0)
-    #                 magnitude = np.linalg.norm(avg_velocity)
-    #                 if magnitude > self.stationary_velocity_threshold:
-    #                     centroid = np.mean(cluster_points, axis=0)
-    #                     # Check if the centroid is close to any previously detected moving clusters
-    #                     is_close_to_previous = False
-    #                     for prev_centroid in moving_centroids:
-    #                         if np.linalg.norm(centroid - prev_centroid) < self.vicinity_threshold:
-    #                             is_close_to_previous = True
-    #                             break
-    #                     # Only add the centroid to the list of moving centroids if it is not close to any previous ones
-    #                     if not is_close_to_previous:
-    #                         moving_centroids.append(centroid)
-
-    # # Publish the filtered point cloud containing only the centroids of the moving clusters
-    #     moving_centroid_points = [Point32(x=x, y=y, z=0.0) for x, y in moving_centroids]
-    #     moving_centroid_cloud_msg = PointCloud(header=header, points=moving_centroid_points)
-    #     self.pub.publish(moving_centroid_cloud_msg)
 
 def main(args=None):
     rclpy.init(args=args)

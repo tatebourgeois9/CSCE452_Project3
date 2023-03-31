@@ -4,82 +4,80 @@ from sensor_msgs.msg import LaserScan, PointCloud
 from geometry_msgs.msg import Point32
 import math
 import numpy as np
+from sklearn.cluster import DBSCAN
 
 class LaserScanToPointCloud(Node):
-
     def __init__(self):
         super().__init__('laser_scan_to_pointcloud')
         self.sub = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
         self.pub = self.create_publisher(PointCloud, '/scan_pointcloud', 10)
+        self.prev_points_history = []  # Store history of previous points
+        self.history_size = 50  # Number of previous point clouds to track
+        self.stationary_velocity_threshold = 30.0  # Threshold to consider a cluster's average velocity as stationary
+        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
+        self.cluster_min_samples = 6  # Minimum number of points in a cluster
+        self.vicinity_threshold = 0.3  # Maximum distance between two points to be considered in the same vicinity
+        self.action_dict = {}
+        self.counter = 0
+        self.first = True
+        self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
+        self.cluster_min_samples = 3
 
-        # Parameters for filtering and smoothing
-        self.min_range = 0.2
-        self.max_range = 5.0
-        self.moving_average_size = 5
-        self.range_diff_threshold = 0.2
-        self.buffer_zone_threshold = 0.05
-        self.angle_diff_threshold = 0.05
-        self.angle_decimal_places = 3
-        self.scan_history = []
-        self.initial_ranges = None
+
 
     def scan_callback(self, scan_msg):
-        # Apply moving average filter
-        self.scan_history.append(scan_msg.ranges)
-        if len(self.scan_history) > self.moving_average_size:
-            self.scan_history.pop(0)
-        filtered_ranges = np.mean(self.scan_history, axis=0)
-
-        # Initialize initial_ranges with the first scan
-        if self.initial_ranges is None:
-            self.initial_ranges = np.copy(filtered_ranges)
-            return
-
-        # Replace NaN and Inf values in both arrays with a large value
-        large_value = 1e6
-        filtered_ranges = np.nan_to_num(filtered_ranges, nan=large_value, posinf=large_value, neginf=large_value)
-        initial_ranges = np.nan_to_num(self.initial_ranges, nan=large_value, posinf=large_value, neginf=large_value)
-
-        # Convert LaserScan to PointCloud
         header = scan_msg.header
         points = []
-
-        range_diffs = np.abs(np.subtract(filtered_ranges, initial_ranges))
-        changed_angles = np.where(range_diffs > self.range_diff_threshold)[0]
-
-        for i in changed_angles:
-            r = filtered_ranges[i]
-            if self.min_range < r < self.max_range:
-                # Calculate the angle of the ray
+        range_min = 100000
+        for i, r in enumerate(scan_msg.ranges):
+            if r != float('inf') and r != float('nan') and (r > scan_msg.range_min and r < scan_msg.range_max):
                 angle = scan_msg.angle_min + i * scan_msg.angle_increment
-                # Round the angle
-                angle = round(angle, self.angle_decimal_places)
-
-                # Convert polar coordinates to Cartesian coordinates
+                angle_key = round(angle, 3)
+                if self.first:
+                    self.action_dict[angle_key] = r
+                if not self.first:
+                    if angle_key in self.action_dict.keys():
+                        if r >=  self.action_dict[angle_key] - .2:
+                            #print("This happened")
+                            continue
+                        
                 x = r * math.cos(angle)
                 y = r * math.sin(angle)
                 z = 0.0
+                point = Point32(x=x, y=y, z=z)
+                points.append(point)
+        self.counter += 1
+        if self.counter == 5:
+            self.first = False
+        # Perform DBSCAN clustering
+        X = np.array([[p.x, p.y] for p in points])
+        
+        dbscan = DBSCAN(eps=self.cluster_eps, min_samples=self.cluster_min_samples)
+        
+        print(X)
 
-                initial_r = initial_ranges[i]
-                initial_x = initial_r * math.cos(angle)
-                initial_y = initial_r * math.sin(angle)
+        
+        if X.size == 0:
+            return
+        dbscan.fit(X)
 
-                # Calculate the distance between the initial point and the current point
-                distance = math.sqrt((x - initial_x) ** 2 + (y - initial_y) ** 2)
+        # Extract cluster labels and their centroids
+        cluster_labels = set(dbscan.labels_)
+        cluster_centroids = []
+        for label in cluster_labels:
+            if label == -1:  # Ignore noise points
+                continue
+            indices = np.where(dbscan.labels_ == label)[0]
+            cluster_points = X[indices]
+            centroid = np.mean(cluster_points, axis=0)
+            cluster_centroids.append(Point32(x=centroid[0], y=centroid[1], z=0.0))
 
-                # Calculate the angle difference
-                angle_diff = abs(angle - (scan_msg.angle_min + i * scan_msg.angle_increment))
+        # Create a new PointCloud message with the cluster centroids
+        moving_centroid_cloud_msg = PointCloud(header=header, points=cluster_centroids)
+        
+        # Publish the new message
+        self.pub.publish(moving_centroid_cloud_msg)
 
-                # Check if the current point is within the buffer zone of the initial point and if the angle difference is significant
-                if distance > self.buffer_zone_threshold and angle_diff > self.angle_diff_threshold:
-                    point = Point32(x=x, y=y, z=z)
-                    # Add the point to the list of points
-                    points.append(point)
-
-        cloud_msg = PointCloud(header=header, points=points)
-
-        # Publish the point cloud messages
-        self.pub.publish(cloud_msg)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -88,8 +86,7 @@ def main(args=None):
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-    node.destroy_node()
-    rclpy.shutdown()
+    node.destroy()
 
-if __name__ == '__main__':
-    main()
+main()
+   
