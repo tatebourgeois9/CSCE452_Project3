@@ -15,7 +15,7 @@ class LaserScanToPointCloud(Node):
         self.history_size = 50  # Number of previous point clouds to track
         self.stationary_velocity_threshold = 30.0  # Threshold to consider a cluster's average velocity as stationary
         self.cluster_eps = 0.5  # Maximum distance between two points to be considered in the same cluster
-        self.cluster_min_samples = 6  # Minimum number of points in a cluster
+        self.cluster_min_samples = 5  # Minimum number of points in a cluster
         self.vicinity_threshold = 0.3  # Maximum distance between two points to be considered in the same vicinity
         self.action_dict = {}
         self.counter = 0
@@ -37,7 +37,7 @@ class LaserScanToPointCloud(Node):
                     self.action_dict[angle_key] = r
                 if not self.first:
                     if angle_key in self.action_dict.keys():
-                        if r >=  self.action_dict[angle_key] - .2:
+                        if r >=  self.action_dict[angle_key] - .5:
                             #print("This happened")
                             continue
                         
