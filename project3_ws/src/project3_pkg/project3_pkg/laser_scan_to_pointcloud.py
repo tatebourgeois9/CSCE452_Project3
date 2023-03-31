@@ -19,7 +19,7 @@ class LaserScanToPointCloud(Node):
         header = scan_msg.header
         points = []
         for i, r in enumerate(scan_msg.ranges):
-            if r != float('inf') and not math.isnan(r):  # Updated condition
+            if r != float('inf') and r != float('nan') and (r > scan_msg.range_min or r < scan_msg.range_max):
                 # Calculate the angle of the ray
                 angle = scan_msg.angle_min + i * scan_msg.angle_increment
                 # Convert polar coordinates to Cartesian coordinates
