@@ -42,7 +42,7 @@ class LaserScanToPointCloud(Node):
                 point = Point32(x=x, y=y, z=z)
                 points.append(point)
         self.counter += 1
-        if self.counter == 5:
+        if self.counter == 4:
             self.first = False
             return  
         if self.first:
