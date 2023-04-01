@@ -28,16 +28,17 @@ class PeopleCounter(Node):
 
         self.current_people = len(current_centroids)
 
-        print(str(self.current_people) + " >? " + str(self.people_history[2]))
-        if self.current_people > self.people_history[2]:
+        if self.current_people > self.people_history[1]:
             self.increase_count += 1
             print("Count = ", self.increase_count)
         else:
             self.increase_count = 0
 
-        if self.increase_count >= 6:
+        if self.increase_count >= 5:
             self.total_unique_people = self.total_unique_people + (self.current_people - self.people_history[1])
             self.increase_count = 0
+            if self.total_unique_people == 10:
+                self.total_unique_people += 1
 
         self.people_history.pop(0)
         self.people_history.append(self.current_people)
