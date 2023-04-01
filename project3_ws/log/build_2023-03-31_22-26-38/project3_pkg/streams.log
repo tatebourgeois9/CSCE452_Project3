@@ -1,0 +1,24 @@
+[1.653s] Invoking command in '/home/aaron/project/CSCE452_Project3/project3_ws/src/project3_pkg': PYTHONPATH=/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed
+[2.284s] running egg_info
+[2.287s] writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO
+[2.287s] writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt
+[2.288s] writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt
+[2.288s] writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt
+[2.288s] writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt
+[2.295s] reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[2.296s] writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'
+[2.296s] running build
+[2.300s] running build_py
+[2.304s] running install
+[2.304s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.304s]   warnings.warn(
+[2.305s] running install_lib
+[2.306s] running install_data
+[2.308s] running install_egg_info
+[2.312s] removing '/home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages/project3_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[2.312s] Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages/project3_pkg-0.0.0-py3.10.egg-info
+[2.320s] running install_scripts
+[2.372s] Installing laser_scan_to_pointcloud script to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+[2.372s] Installing peoplecounter script to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg
+[2.375s] writing list of installed files to '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'
+[2.458s] Invoked command in '/home/aaron/project/CSCE452_Project3/project3_ws/src/project3_pkg' returned '0': PYTHONPATH=/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/project3_pkg build --build-base /home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/build install --record /home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/install.log --single-version-externally-managed

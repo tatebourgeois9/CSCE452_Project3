@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'laser_scan_to_pointcloud = project3_pkg.laser_scan_to_pointcloud:main'
+            'laser_scan_to_pointcloud = project3_pkg.laser_scan_to_pointcloud:main','peoplecounter = project3_pkg.peoplecounter:main'
         ],
     },
 )

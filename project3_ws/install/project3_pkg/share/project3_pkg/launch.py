@@ -14,7 +14,10 @@ def generate_launch_description():
     # Create Node for your project
     laser_scan_to_pointcloud_node = Node(package='project3_pkg',
                                          executable='laser_scan_to_pointcloud')
-    
+    peoplecounter_node = Node(package='project3_pkg', executable='peoplecounter')
+
+
+
     # ExecuteProcess (to play the input bag file
     play_bag = ExecuteProcess(
         cmd=['ros2', 'bag', 'play', LaunchConfiguration('bag_in')]
@@ -22,7 +25,7 @@ def generate_launch_description():
     
     # ExecuteProcess to record the output bag file
     record_bag = ExecuteProcess(
-        cmd=['ros2', 'bag', 'record', '-a', '-o', LaunchConfiguration('bag_out')]
+        cmd=['ros2', 'bag', 'record', '-o', LaunchConfiguration('bag_out'), '/person_locations']
     )
     
     # Event handler to shutdown the system when the playback of the input bag file has completed
@@ -34,6 +37,7 @@ def generate_launch_description():
         input_bag_arg,
         output_bag_arg,
         laser_scan_to_pointcloud_node,
+        peoplecounter_node,
         play_bag,
         record_bag,
         terminate_at_end

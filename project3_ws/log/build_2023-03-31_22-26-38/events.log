@@ -1,0 +1,53 @@
+[0.000000] (-) TimerEvent: {}
+[0.000226] (project3_pkg) JobQueued: {'identifier': 'project3_pkg', 'dependencies': OrderedDict()}
+[0.000252] (project3_pkg) JobStarted: {'identifier': 'project3_pkg'}
+[0.091793] (-) TimerEvent: {}
+[0.192954] (-) TimerEvent: {}
+[0.293987] (-) TimerEvent: {}
+[0.398156] (-) TimerEvent: {}
+[0.508273] (-) TimerEvent: {}
+[0.611861] (-) TimerEvent: {}
+[0.728066] (-) TimerEvent: {}
+[0.829964] (-) TimerEvent: {}
+[0.932129] (-) TimerEvent: {}
+[1.036278] (-) TimerEvent: {}
+[1.138126] (-) TimerEvent: {}
+[1.243648] (-) TimerEvent: {}
+[1.348165] (-) TimerEvent: {}
+[1.448725] (-) TimerEvent: {}
+[1.555091] (-) TimerEvent: {}
+[1.652945] (project3_pkg) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/project3_pkg', 'build', '--build-base', '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/build', 'install', '--record', '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/install.log', '--single-version-externally-managed'], 'cwd': '/home/aaron/project/CSCE452_Project3/project3_ws/src/project3_pkg', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'aaron', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/aaron/ros2_humble/ros2-linux/opt/rviz_ogre_vendor/lib:/home/aaron/ros2_humble/ros2-linux/lib', 'HOME': '/home/aaron', 'OLDPWD': '/home/aaron/project/CSCE452_Project3/project3_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2215', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/aaron/ros2_humble/ros2-linux', 'ROS_DISTRO': 'humble', 'LOGNAME': 'aaron', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/aaron/ros2_humble/ros2-linux/lib/x86_64-linux-gnu/pkgconfig:/home/aaron/ros2_humble/ros2-linux/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'aaron', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/home/aaron/ros2_humble/ros2-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/aaron-VirtualBox:@/tmp/.ICE-unix/1451,unix/aaron-VirtualBox:/tmp/.ICE-unix/1451', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/abe796d9_2b6a_4028_8f3a_cec5ffb6219e', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.JJDN21', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.91', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/aaron/ros2_humble/ros2-linux', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/prefix_override:/home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages:/home/aaron/ros2_humble/ros2-linux/lib/python3.10/site-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/aaron/ros2_humble/ros2-linux'}, 'shell': False}
+[1.658348] (-) TimerEvent: {}
+[1.759285] (-) TimerEvent: {}
+[1.867723] (-) TimerEvent: {}
+[1.978191] (-) TimerEvent: {}
+[2.078629] (-) TimerEvent: {}
+[2.188049] (-) TimerEvent: {}
+[2.283836] (project3_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[2.287064] (project3_pkg) StdoutLine: {'line': b'writing ../../build/project3_pkg/project3_pkg.egg-info/PKG-INFO\n'}
+[2.287620] (project3_pkg) StdoutLine: {'line': b'writing dependency_links to ../../build/project3_pkg/project3_pkg.egg-info/dependency_links.txt\n'}
+[2.287942] (project3_pkg) StdoutLine: {'line': b'writing entry points to ../../build/project3_pkg/project3_pkg.egg-info/entry_points.txt\n'}
+[2.288151] (-) TimerEvent: {}
+[2.288404] (project3_pkg) StdoutLine: {'line': b'writing requirements to ../../build/project3_pkg/project3_pkg.egg-info/requires.txt\n'}
+[2.288654] (project3_pkg) StdoutLine: {'line': b'writing top-level names to ../../build/project3_pkg/project3_pkg.egg-info/top_level.txt\n'}
+[2.295455] (project3_pkg) StdoutLine: {'line': b"reading manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'\n"}
+[2.296251] (project3_pkg) StdoutLine: {'line': b"writing manifest file '../../build/project3_pkg/project3_pkg.egg-info/SOURCES.txt'\n"}
+[2.296503] (project3_pkg) StdoutLine: {'line': b'running build\n'}
+[2.300156] (project3_pkg) StdoutLine: {'line': b'running build_py\n'}
+[2.304221] (project3_pkg) StdoutLine: {'line': b'running install\n'}
+[2.304480] (project3_pkg) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[2.304601] (project3_pkg) StderrLine: {'line': b'  warnings.warn(\n'}
+[2.305000] (project3_pkg) StdoutLine: {'line': b'running install_lib\n'}
+[2.306455] (project3_pkg) StdoutLine: {'line': b'running install_data\n'}
+[2.308117] (project3_pkg) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.312222] (project3_pkg) StdoutLine: {'line': b"removing '/home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages/project3_pkg-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[2.312565] (project3_pkg) StdoutLine: {'line': b'Copying ../../build/project3_pkg/project3_pkg.egg-info to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/python3.10/site-packages/project3_pkg-0.0.0-py3.10.egg-info\n'}
+[2.319924] (project3_pkg) StdoutLine: {'line': b'running install_scripts\n'}
+[2.371744] (project3_pkg) StdoutLine: {'line': b'Installing laser_scan_to_pointcloud script to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg\n'}
+[2.372346] (project3_pkg) StdoutLine: {'line': b'Installing peoplecounter script to /home/aaron/project/CSCE452_Project3/project3_ws/install/project3_pkg/lib/project3_pkg\n'}
+[2.375536] (project3_pkg) StdoutLine: {'line': b"writing list of installed files to '/home/aaron/project/CSCE452_Project3/project3_ws/build/project3_pkg/install.log'\n"}
+[2.388239] (-) TimerEvent: {}
+[2.457612] (project3_pkg) CommandEnded: {'returncode': 0}
+[2.488088] (project3_pkg) JobEnded: {'identifier': 'project3_pkg', 'rc': 0}
+[2.488619] (-) TimerEvent: {}
+[2.489042] (-) EventReactorShutdown: {}
