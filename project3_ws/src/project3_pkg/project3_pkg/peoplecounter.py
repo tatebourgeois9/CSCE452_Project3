@@ -12,7 +12,7 @@ class PeopleCounter(Node):
         self.sub = self.create_subscription(PointCloud, '/scan_pointcloud', self.pointcloud_callback, 10)
         self.total_unique_people = 0
         self.current_people = 0
-        self.people_history = [0, 0, 0, 0, 0]
+        self.people_history = [0, 0, 0, 0, 0 ,0 ,0, 0]
         self.increase_count = 0
 
     def pointcloud_callback(self, pointcloud_msg):
@@ -23,14 +23,13 @@ class PeopleCounter(Node):
         self.current_people = len(current_centroids)
 
         print(str(self.current_people) + " >? " + str(self.people_history[2]))
-        if self.current_people > self.people_history[2]:
+        if self.current_people > self.people_history[1]:
             self.increase_count += 1
             print("Count = ", self.increase_count)
         else:
             self.increase_count = 0
 
-        if self.increase_count >= 3:
-            print()
+        if self.increase_count >= 5:
             self.total_unique_people = self.total_unique_people + (self.current_people - self.people_history[1])
             self.increase_count = 0
 
